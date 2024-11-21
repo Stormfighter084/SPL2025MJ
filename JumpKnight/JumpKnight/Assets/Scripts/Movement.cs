@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 pivot.transform.rotation = lockedRotation;
-                jumpStrength = Mathf.Abs(Mathf.Tan(Time.fixedTime) * jumpSpeed);
+                jumpStrength = Mathf.Abs(Mathf.Sin(Time.fixedTime) * jumpSpeed);
                 return;
             }
 
