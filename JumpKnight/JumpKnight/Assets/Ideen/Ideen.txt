@@ -1,0 +1,2 @@
+1. Player spring Richtung weiter machen.
+2. Player spring Richtung schneller.
