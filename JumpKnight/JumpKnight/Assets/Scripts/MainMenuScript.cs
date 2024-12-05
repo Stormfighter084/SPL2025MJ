@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
@@ -20,7 +21,7 @@ public class MainMenuScript : MonoBehaviour
         DayPNG.SetActive(false);
         EveningPNG.SetActive(false);
         NightPNG.SetActive(false);
-
+        
     }
     void Update()
     {
@@ -62,5 +63,10 @@ public class MainMenuScript : MonoBehaviour
             DayPNG.SetActive(false);
             NightPNG.SetActive(false);
         }
+    }
+
+    public void ClickStartButton() 
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }

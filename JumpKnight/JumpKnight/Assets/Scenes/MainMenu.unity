@@ -149,7 +149,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.2247866, y: -1.0056366, z: 197.45195}
-  m_LocalScale: {x: 3.1, y: 3.1, z: 1}
+  m_LocalScale: {x: 0.45538998, y: 0.45538998, z: 0.1469}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1612828410}
@@ -233,7 +233,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.2247866, y: -1.0056366, z: 197.45195}
-  m_LocalScale: {x: 3.1, y: 3.1, z: 1}
+  m_LocalScale: {x: 0.45538998, y: 0.45538998, z: 0.1469}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1612828410}
@@ -317,7 +317,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.2247866, y: -1.0056366, z: 197.45195}
-  m_LocalScale: {x: 3.1, y: 3.1, z: 1}
+  m_LocalScale: {x: 0.45538998, y: 0.45538998, z: 0.1469}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1612828410}
@@ -368,7 +368,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.76, y: 3.24}
+  m_Size: {x: 57.6, y: 32.399998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -457,13 +457,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 107914551}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 456938023}
+        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+        m_MethodName: ClickStartButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -540,7 +540,7 @@ MonoBehaviour:
   DayPNG: {fileID: 45701421}
   EveningPNG: {fileID: 1737723581}
   NightPNG: {fileID: 8172119}
-  start: {fileID: 0}
+  start: {fileID: 107914553}
 --- !u!4 &456938024
 Transform:
   m_ObjectHideFlags: 0
@@ -1226,7 +1226,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.2247866, y: -1.0056366, z: 197.45195}
-  m_LocalScale: {x: 3.1, y: 3.1, z: 1}
+  m_LocalScale: {x: 0.45538998, y: 0.45538998, z: 0.1469}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1612828410}
