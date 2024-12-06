@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using Unity.Collections;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class MovementTest : MonoBehaviour
@@ -21,10 +23,15 @@ public class MovementTest : MonoBehaviour
     public float ArrowRotation;
     public float SpeedRotationFast;
     public float SpeedRotation;
+
+
     
     private Quaternion locked;
     private Quaternion lockedRotation;
-    private float time;
+    private float Rotationtime;
+    private float Jumptime;
+
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,47 +42,43 @@ public class MovementTest : MonoBehaviour
    
     void Update()
     {
-        bool grounded = Physics2D.Raycast(currentObject.position, Vector2.down, 0.55f, ground);
 
-        //pivot.transform.rotation = Quaternion.AngleAxis(Mathf.Sin(Time.fixedTime) * 30, new Vector3(0, 0, 1));
-        //jumpStrength = Mathf.Abs(Mathf.Sin(Time.fixedTime) * jumpSpeed);
+        
+        Vector2 vectemp1 = new Vector2(currentObject.position.x + (currentObject.transform.localScale.x / 2), currentObject.position.y);
+        Vector2 vectemp2 = new Vector2(currentObject.position.x - (currentObject.transform.localScale.x / 2), currentObject.position.y);
+        bool groundedleft = Physics2D.Raycast(vectemp1, Vector2.down, 0.6f, ground);
+        bool groundedright = Physics2D.Raycast(vectemp2, Vector2.down, 0.6f, ground);
 
         ArrowUpdate();
 
-        if (grounded)
+        if (groundedleft|| groundedright)
         {
             if (Input.GetKey(KeyCode.Space))
             {
+                Jumptime += 1 * Time.deltaTime;
                 pivot.transform.rotation = lockedRotation;
-                jumpStrength = Mathf.Abs(Mathf.Sin(Time.fixedTime) * jumpSpeed);
+                jumpStrength = Mathf.Abs(Mathf.Sin(Jumptime) * jumpSpeed);
                 return;
             }
-
-
-
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 Vector2 d = Arrow.transform.position - pivot.transform.position;
                 rb.AddForce(d * jumpStrength, ForceMode2D.Impulse);
                 jumpStrength = 1;
+                Jumptime = 0;
             }
 
         }
         pivot.transform.rotation = lockedRotation;
-        time += 1f * Time.deltaTime;
+        Rotationtime += SpeedRotation * Time.deltaTime;
         if (Input.GetKey(KeyCode.F))
-            time += SpeedArowFast * Time.deltaTime;
+            Rotationtime += SpeedRotationFast * Time.deltaTime;
 
-
-
-
-        lockedRotation = Quaternion.AngleAxis(Mathf.Sin(time) * ArrowRotation, new Vector3(0, 0, 1));
-        
+        lockedRotation = Quaternion.AngleAxis(Mathf.Sin(Rotationtime) * ArrowRotation, new Vector3(0, 0, 1));
     }
     private void ArrowUpdate()
     {
-        //Arrow.transform.position = this.transform.position + new Vector3(0, 5);
         Arrow.transform.localScale = new Vector2(0.5f, jumpStrength / 5);
     }
 }
