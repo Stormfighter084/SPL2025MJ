@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
@@ -25,13 +26,13 @@ public class MovementTest : MonoBehaviour
     public float SpeedRotation;
 
 
-    
+    private bool jumped;
     private Quaternion locked;
     private Quaternion lockedRotation;
     private float Rotationtime;
     private float Jumptime;
-
-    
+    private Vector2 direction;
+ 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -63,20 +64,25 @@ public class MovementTest : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                Vector2 d = Arrow.transform.position - pivot.transform.position;
-                rb.AddForce(d * jumpStrength, ForceMode2D.Impulse);
+                Vector2 direction = Arrow.transform.position - pivot.transform.position;
+              
+                rb.AddForce(direction * jumpStrength, ForceMode2D.Impulse);
+               
                 jumpStrength = 1;
                 Jumptime = 0;
             }
+          
 
         }
         pivot.transform.rotation = lockedRotation;
         Rotationtime += SpeedRotation * Time.deltaTime;
+    
         if (Input.GetKey(KeyCode.F))
             Rotationtime += SpeedRotationFast * Time.deltaTime;
 
         lockedRotation = Quaternion.AngleAxis(Mathf.Sin(Rotationtime) * ArrowRotation, new Vector3(0, 0, 1));
     }
+ 
     private void ArrowUpdate()
     {
         Arrow.transform.localScale = new Vector2(0.5f, jumpStrength / 5);
