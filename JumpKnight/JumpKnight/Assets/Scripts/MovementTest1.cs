@@ -32,7 +32,6 @@ public class MovementTest1 : MonoBehaviour
     private float Rotationtime;
     private float Jumptime;
     private Vector2 direction;
-    private float timeInAir;
     private float jumpstreghtlock;
 
  
@@ -57,7 +56,7 @@ public class MovementTest1 : MonoBehaviour
 
         if (groundedleft|| groundedright)
         {
-            timeInAir = 0;
+            
             if (Input.GetKey(KeyCode.Space))
             {
                 Jumptime += 1 * Time.deltaTime;
@@ -87,8 +86,8 @@ public class MovementTest1 : MonoBehaviour
         }
 
         lockedRotation = Quaternion.AngleAxis(Mathf.Sin(Rotationtime) * ArrowRotation, new Vector3(0, 0, 1));
-        timeInAir += 1 * Time.deltaTime;
-        //Debug.Log(timeInAir);
+      
+        
     }
     
     private void ArrowUpdate()
@@ -96,15 +95,5 @@ public class MovementTest1 : MonoBehaviour
         Arrow.transform.localScale = new Vector2(0.5f, jumpStrength / 5);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-
-       if(timeInAir > 0.1)
-        {
-            Debug.Log(rb.velocity);
-            rb.AddForce(((rb.velocity*-1) * jumpstreghtlock) * 0.2f, ForceMode2D.Impulse);
-            jumpstreghtlock = 0;
-        }
-
-    }
+  
 }
