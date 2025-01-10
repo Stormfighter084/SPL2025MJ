@@ -12,6 +12,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject DayPNG;
     public GameObject EveningPNG;
     public GameObject NightPNG;
+    public AudioSource audioSource;
 
     public Button start;
 
@@ -68,5 +69,13 @@ public class MainMenuScript : MonoBehaviour
     public void ClickStartButton() 
     {
         SceneManager.LoadScene("SampleScene");
+    }
+    public void ClickMuteButton()
+    {
+        if(!audioSource.mute)
+            audioSource.mute = true;
+        else if (audioSource.mute)
+            audioSource.mute = false;
+
     }
 }
